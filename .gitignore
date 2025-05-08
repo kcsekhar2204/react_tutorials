@@ -1,0 +1,11 @@
+# Node modules
+node_modules/
+
+# Next.js build output
+.next/
+
+# Distribution files
+dist/
+
+# Dependency lock file
+package-lock.json
