@@ -1,3 +1,12 @@
-export default function Square() {
-  return <button className="square">X</button>;
+import React from 'react'
+import Game from './components/Game'
+
+const App = () => {
+  return (
+    <div>
+      <Game />
+    </div>
+  )
 }
+
+export default App
