@@ -71,6 +71,10 @@ body {
   width: 34px;
 }
 
+.highlight {
+  background: #ff0 !important;
+}
+
 .board-row:after {
   clear: both;
   content: '';
@@ -88,4 +92,19 @@ body {
 
 .game-info {
   margin-left: 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.toggle {
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+}
+
+.toggle .rotate {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
 }

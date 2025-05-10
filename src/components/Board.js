@@ -3,7 +3,7 @@ import { calculateWinner } from '../utils/helper'
 
 export default function Board({ isXNext, squares, onPlay }) {
     const handleClick = (i) => {
-        if (squares[i] || calculateWinner(squares)) {
+        if (squares[i] || calculateWinner(squares)[0]) {
             return
         }
         const nextSquares = squares.slice()
@@ -11,10 +11,10 @@ export default function Board({ isXNext, squares, onPlay }) {
             nextSquares[i] = 'X'
         else
             nextSquares[i] = 'O'
-        onPlay(nextSquares)
+        onPlay(nextSquares, i)
     }
 
-    const winner = calculateWinner(squares);
+    const [winner, matchingRow] = calculateWinner(squares);
     let status;
     if (winner) {
         if (winner === 'Draw') {
@@ -26,22 +26,37 @@ export default function Board({ isXNext, squares, onPlay }) {
         status = 'Next player: ' + (isXNext ? 'X' : 'O');
     }
 
+    const renderBoard = () => {
+        const board = [];
+
+        for (let i = 0; i < 3; i++) {
+            const row = [];
+
+            for (let j = 0; j < 3; j++) {
+                const index = i * 3 + j;
+                row.push(
+                    <Square
+                        key={index}
+                        value={squares[index]}
+                        classes={matchingRow && matchingRow.includes(index) ? 'highlight' : ''}
+                        onSquareClick={() => handleClick(index)}
+                    />
+                );
+            }
+
+            board.push(
+                <div key={i} className="board-row">
+                    {row}
+                </div>
+            );
+        }
+
+        return board;
+    };
+
+
     return <>
         <div className="status">{status}</div>
-        <div className="board-row">
-            <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-            <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-            <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
-        </div>
-        <div className="board-row">
-            <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-            <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-            <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
-        </div>
-        <div className="board-row">
-            <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-            <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-            <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
-        </div>
+        {renderBoard()}
     </>
 }
