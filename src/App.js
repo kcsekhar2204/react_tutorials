@@ -1,10 +1,12 @@
 import React from 'react'
-import Game from './components/Game'
+import TicTacToe from './pages/tic-tac-toe'
+import BasketList from './pages/basket-list'
 
 const App = () => {
   return (
     <div>
-      <Game />
+      {/* <TicTacToe /> */}
+      <BasketList />
     </div>
   )
 }
