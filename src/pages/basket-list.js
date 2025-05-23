@@ -1,4 +1,4 @@
-import FilterableProductTable from '../components/FilterableProductTable';
+import FilterableProductTable from '../components/basket-list/FilterableProductTable';
 import {basket_items} from '../utils/data';
 
 const BasketList = () => {
