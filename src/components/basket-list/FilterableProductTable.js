@@ -1,3 +1,4 @@
+"use client";
 import ProductTable from "./ProductTable";
 import SearchBar from "./SearchBar";
 import { useState } from "react";

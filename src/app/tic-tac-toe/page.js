@@ -1,4 +1,4 @@
-import Game from '../components/tic-tac-toe/Game'
+import Game from '../../components/tic-tac-toe/Game'
 
 const TicTacToe = () => {
   return <Game />
